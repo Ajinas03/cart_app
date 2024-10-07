@@ -1,3 +1,4 @@
+import 'package:cart_app/repository/product_repo.dart';
 import 'package:cart_app/screens/common/text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,11 @@ class CartButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusDirectional.circular(10)),
               elevation: 0,
-              onPressed: () {},
+              onPressed: () async {
+                final prod = await ProductRepo.getUnauthProducts();
+
+                print("${prod?.data?.length} ++++++++++");
+              },
               label: const TextWidget(text: "Add")),
     );
   }

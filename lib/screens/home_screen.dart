@@ -1,7 +1,9 @@
+import 'package:cart_app/logic/unAuth/unauth_bloc.dart';
 import 'package:cart_app/screens/auth_user_screen.dart';
 import 'package:cart_app/screens/unauth_user_screen.dart';
 import 'package:cart_app/utils/screen_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -31,6 +33,8 @@ class HomeScreen extends StatelessWidget {
               height: 40,
               child: FloatingActionButton.extended(
                   onPressed: () {
+                    context.read<UnauthBloc>().add(GetProducts());
+
                     pushScreen(context, const UnauthUserScreen());
                   },
                   label: const Text("Continue without LogIn")),
